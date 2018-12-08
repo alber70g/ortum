@@ -1,0 +1,38 @@
+{
+  "name": "levo",
+  "version": "0.0.0",
+  "description": "A library that allows you to **simplify** the use of `Getters` combined with `Setters` to `get` from a __global state__ and `update` from __sub-state__.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "nyc tape -r ts-node/register src/*.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alber70g/levo"
+  },
+  "author": "Albert Groothedde <albertgroothedde@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/ramda": "^0.25.42",
+    "@types/tape": "^4.2.32",
+    "nyc": "^13.1.0",
+    "redux": "^4.0.1",
+    "tap-prettify": "0.0.2",
+    "tape": "^4.9.1",
+    "tape-watch": "^2.3.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.test.ts"
+    ]
+  }
+}
