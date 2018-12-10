@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
     "declaration": true,
+    "module": "commonjs",
+    "outDir": "./lib/commonjs",
     "sourceMap": true,
-    "outDir": "./",
+    "alwaysStrict": true,
     "strict": true,
-    "types": ["redux"]
+    "target": "es5"
   },
-  "files": ["index.ts"]
+  "files": [
+    "./src/index.ts"
+  ]
 }

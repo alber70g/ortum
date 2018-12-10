@@ -1,7 +1,6 @@
 import * as test from 'tape';
 import * as redux from 'redux';
-import { createReduxStateContainer } from './create-redux-state-container';
-import { Updater } from './types';
+import { createReduxStateContainer, Updater } from '../src/';
 
 test('createReduxStateContainer', (t) => {
   t.plan(2);

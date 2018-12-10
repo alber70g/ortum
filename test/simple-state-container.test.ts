@@ -1,6 +1,6 @@
 import * as test from 'tape';
-import { SimpleStateContainer } from '../';
-import { Updater } from './types';
+import { SimpleStateContainer } from '../src/';
+import { Updater } from '../src/';
 
 test('SimpleStateContainer', (t) => {
   t.plan(2);

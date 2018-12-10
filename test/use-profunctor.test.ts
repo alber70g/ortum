@@ -5,7 +5,7 @@ import {
   Updater,
   Getter,
   Setter,
-} from '../';
+} from '../lib/commonjs';
 
 test('useProfunctor', (t) => {
   t.plan(6);
@@ -24,18 +24,16 @@ test('useProfunctor', (t) => {
     ...prev,
     number: prev.number + 1,
   });
-  let triggerCount = 0;
   onStateChange((newState) => {
-    if (triggerCount < 1)
-      t.deepEqual(
-        newState,
-        updater(initialState),
-        'onStateChange() callback gives correctly updated state',
-      );
-    triggerCount++;
+    t.deepEqual(
+      newState,
+      updater(initialState),
+      'onStateChange() callback gives correctly updated state',
+    );
   });
-
   testProf.setState(updater);
+  // set listener to nothing so the assert doesn't get triggered everytime
+  onStateChange(() => {});
   t.deepEqual(
     testProf.getState(),
     updater(initialState),
