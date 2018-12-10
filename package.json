@@ -18,7 +18,6 @@
     "@types/tape": "^4.2.32",
     "nyc": "^13.1.0",
     "redux": "^4.0.1",
-    "tap-prettify": "0.0.2",
     "tape": "^4.9.1",
     "tape-watch": "^2.3.0",
     "ts-node": "^7.0.1",

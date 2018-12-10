@@ -8,5 +8,5 @@
     "strict": true,
     "types": ["redux"]
   },
-  "files": ["redux.d.ts", "index.ts"]
+  "files": ["index.ts"]
 }
