@@ -1,5 +1,5 @@
 {
-  "name": "extollo",
+  "name": "ortum",
   "version": "0.0.0",
   "description": "Minimal (< 2kb) unidirectional state management library",
   "main": "lib/commonjs/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/alber70g/extollo"
+    "url": "git://github.com/alber70g/ortum"
   },
   "author": "Albert Groothedde <albertgroothedde@gmail.com>",
   "license": "MIT",
