@@ -3,7 +3,6 @@ import * as redux from 'redux';
 import { createReduxStateContainer, Updater } from '../src/';
 
 test('createReduxStateContainer', (t) => {
-  t.plan(2);
 
   class ProfAction<T> implements redux.Action {
     public type = 'PROF_ACTION';

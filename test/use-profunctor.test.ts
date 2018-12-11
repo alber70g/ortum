@@ -8,7 +8,6 @@ import {
 } from '../lib/commonjs';
 
 test('useProfunctor', (t) => {
-  t.plan(6);
 
   const initialState = { number: 0, foo: { bar: 1 } };
   const [testProf, onStateChange] = useProfunctor(

@@ -3,7 +3,6 @@ import { SimpleStateContainer } from '../src/';
 import { Updater } from '../src/';
 
 test('SimpleStateContainer', (t) => {
-  t.plan(2);
 
   const state = { number: 1, foo: { bar: { baz: 1 } } };
   const simpleState = new SimpleStateContainer(state);
