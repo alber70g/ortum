@@ -1,10 +1,11 @@
-import { useProfunctor } from '../lib/es/use-profunctor.js';
-import { ProfunctorState } from '../lib/es/profunctor-state.js';
-import { SimpleStateContainer } from '../lib/es/simple-state-container.js';
+import { useProfunctor } from '../lib/commonjs';
+import { SimpleStateContainer } from '../lib/commonjs';
 import { html, render } from '../node_modules/lit-html/lit-html.js';
+import { ProfunctorState } from '../lib/commonjs/profunctor-state';
 
 type Todo = { id?: number; description: string; done: boolean };
 type State = { todoState: { todos: Todo[]; newTodo?: Todo } };
+
 function app(container: HTMLElement) {
   const initialState: State = {
     todoState: {
@@ -28,7 +29,11 @@ function app(container: HTMLElement) {
     <h1>My Todo App</h1>
     ${todoList(todoProf)}
   `;
-  onStateChange(() => render(appView(), container));
+  const renderApp = () => render(appView(), container);
+  onStateChange(renderApp);
+  
+  // initial render
+  renderApp();
 }
 
 function todoList({
@@ -66,7 +71,7 @@ function todoList({
       <ul>
         <li>
           <input @keyup=${setNewTodo} />
-          <button @click=${() => addTodo}></button></li>
+          <button @click=${() => addTodo}>Add</button></li>
           ${getState().todos.map(
             (t) => t.id && todo(createTodoProf(t.id), removeTodo),
           )}
@@ -93,7 +98,7 @@ function todo(
       return { ...todo, inProgress: true };
     });
 
-  return `
+  return html`
     <li title=${todo.id}>
       ${todo.done ? 'Done' : 'Todo'}: 
       ${todo.description}

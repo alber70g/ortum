@@ -1,5 +1,5 @@
 import { Store, Action } from 'redux';
-import { StateContainer } from './types';
+import { StateContainer } from './profunctor-state';
 
 /**
  * Creates a StateContainer based on Redux

@@ -1,5 +1,17 @@
-import { GetState, SetState, Lens, Getter, Setter, Updater } from './types';
 import { memoizeWith, identity } from 'ramda';
+
+export type Updater<T> = (prev: T) => T;
+export type GetState<T> = () => T;
+export type SetState<T> = (updater: Updater<T>) => void;
+export type Lens<T, S> = { get: Getter<T, S>; set: Setter<T, S> };
+export type Getter<T, S> = (outer: T) => S;
+export type Setter<T, S> = ((newInner: S, prevOuter: T) => T);
+export type OnStateChange<T> = (cb: (state: T) => void) => void;
+
+export interface StateContainer<T> {
+  getState: GetState<T>;
+  setState: SetState<T>;
+}
 
 /**
  * Inspired by https://github.com/staltz/use-profunctor-state
@@ -21,15 +33,10 @@ export class ProfunctorState<T> {
     const get = typeof a === 'object' ? a.get : a;
     const set = typeof a === 'object' ? a.set : b as Setter<T, S>;
 
-    const innerSetState: SetState<S> = (
-      newInnerStateOrUpdate: S | Updater<S>,
-    ) => {
+    const innerSetState: SetState<S> = (newInnerStateOrUpdate: Updater<S>) => {
       this.setState((prevState) => {
         const innerState = get(prevState);
-        const newInnerState =
-          typeof newInnerStateOrUpdate === 'function'
-            ? (newInnerStateOrUpdate as Updater<S>)(innerState)
-            : newInnerStateOrUpdate as S;
+        const newInnerState = newInnerStateOrUpdate(innerState);
         if (newInnerState === innerState) return prevState;
         return set(newInnerState, prevState);
       });

@@ -8,7 +8,7 @@ import {
 } from '../lib/commonjs';
 
 test('useProfunctor', (t) => {
-  t.plan(6);
+  t.plan(7);
 
   const initialState = { number: 0, foo: { bar: 1 } };
   const [testProf, onStateChange] = useProfunctor(
@@ -66,5 +66,14 @@ test('useProfunctor', (t) => {
     'using subProf.setState() testProf.getState() returns correct value',
   );
 
-  t.end();
+  const sameStateProf = testProf.promap(
+    (state) => state,
+    (newState, state) => newState,
+  );
+  sameStateProf.setState((state) => state);
+  t.deepEqual(
+    testProf.getState(),
+    sameStateProf.getState(),
+    'state stays the same',
+  );
 });

@@ -1,4 +1,4 @@
-import { StateContainer, Updater } from './types';
+import { StateContainer, Updater } from "./profunctor-state";
 
 export class SimpleStateContainer<T> implements StateContainer<T> {
   private state: T;

@@ -1,5 +1,4 @@
-import { OnStateChange, StateContainer, Updater } from './types';
-import { ProfunctorState } from './profunctor-state';
+import { ProfunctorState, StateContainer, OnStateChange, Updater } from './profunctor-state';
 import { SimpleStateContainer } from './simple-state-container';
 
 export function useProfunctor<T>(
