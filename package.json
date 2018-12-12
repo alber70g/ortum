@@ -1,5 +1,5 @@
 {
-  "name": "extollo",
+  "name": "ortum",
   "version": "0.0.0",
   "description": "Minimal (< 2kb) unidirectional state management library",
   "main": "lib/commonjs/index.js",
@@ -8,12 +8,11 @@
     "prepublish": "rm -rf lib",
     "build": "run-s prepublish build:*",
     "build:commonjs": "tsc",
-    "build:example": "tsc -p ./todo-example",
-    "test": "nyc tape -r ts-node/register test/*.test.ts"
+    "test": "npm run build && nyc tape -r ts-node/register test/*.test.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/alber70g/extollo"
+    "url": "git://github.com/alber70g/ortum"
   },
   "author": "Albert Groothedde <albertgroothedde@gmail.com>",
   "license": "MIT",
