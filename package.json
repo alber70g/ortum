@@ -5,7 +5,7 @@
   "main": "lib/commonjs/index.js",
   "types": "lib/commonjs/index.d.ts",
   "scripts": {
-    "prepublish": "rm -rf lib",
+    "prepublish": "rm -rf lib; npm run build",
     "build": "run-s prepublish build:*",
     "build:commonjs": "tsc",
     "test": "npm run build && nyc tape -r ts-node/register test/*.test.ts"
