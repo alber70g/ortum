@@ -1,9 +1,9 @@
 Ortum
 =====
 
-Ortum is a small <sup>(< 2kb)</sup> unidirectional, framework agnostic, state 
+Ortum is a small framework agnostic, unidirectional state 
 management library.  
-It's inspired on the work of [André Staltz' Profunctor State Optics](https://github.com/staltz/use-profunctor-state)
+It's inspired by the work of André Staltz' on [Profunctor State Optics](https://github.com/staltz/use-profunctor-state)
 
 Ortum allows your features to be independent from the global state while having 
 the ability to use the global state.  
