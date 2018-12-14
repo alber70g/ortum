@@ -1,5 +1,5 @@
 // import the library
-const { SimpleStateContainer, useProfunctor } = require('../lib/commonjs');
+const { SimpleStateContainer, useProfunctor } = require('ortum');
 
 // create an initial state to use in the stateContainer
 const initialState = { counter: 0 };
@@ -20,3 +20,4 @@ appStateContainer.setState((prevState) => ({
   ...prevState,
   counter: prevState.counter + 1,
 }));
+// console.log in onStateChange triggers { counter: 1 }
