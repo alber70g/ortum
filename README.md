@@ -54,15 +54,17 @@ const [appProf, onStateChange] = useProfunctor(
 onStateChange((state) => console.log(state));
 
 // Use the profunctor to get and set the state
-console.log(appProf.getState()); // { counter: 0 }
+console.log(appProf.getState()); 
+// { counter: 0, authors: { .. }  }
 
 // Set state using an Updater: prevState => newState
-// After this statement you'll get a console.log with { counter: 1 }
+// After this statement you'll get a console.log with 
+// // { counter: 1, authors: { .. }  }
 appProf.setState((prevState) => {
   return Object.assign(
     {}, 
     prevState, 
-    { number: prevState.counter + 1 }
+    { counter: prevState.counter + 1 }
   )
 });
 
