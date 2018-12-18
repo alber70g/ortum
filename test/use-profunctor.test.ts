@@ -8,10 +8,10 @@ import {
 } from '../lib/commonjs';
 
 test('useProfunctor', (t) => {
-  t.plan(7);
+  t.plan(8);
 
   const initialState = { number: 0, foo: { bar: 1 } };
-  const [testProf, onStateChange] = useProfunctor(
+  const [ testProf, onStateChange ] = useProfunctor(
     new SimpleStateContainer(initialState),
   );
   t.deepEqual(
@@ -76,4 +76,13 @@ test('useProfunctor', (t) => {
     sameStateProf.getState(),
     'state stays the same',
   );
+
+  const oldState = testProf.getState();
+  testProf.setState({ ...testProf.getState(), number: 10 });
+  t.deepEqual(
+    testProf.getState(),
+    { ...oldState, number: 10 },
+    'using setState(T), state gets updated correctly',
+  );
+
 });
