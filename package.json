@@ -1,7 +1,7 @@
 {
   "name": "ortum",
   "version": "0.0.1-2",
-  "description": "Minimal (< 2kb) unidirectional state management library",
+  "description": "Minimal unidirectional state management library",
   "main": "lib/commonjs/index.js",
   "types": "lib/commonjs/index.d.ts",
   "scripts": {
