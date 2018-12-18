@@ -19,6 +19,8 @@ Install into your project:
 $ npm install --save ortum
 ```
 
+> Give it a try at: https://stackblitz.com/edit/ortum-counter?file=src/counter.ts
+
 ### Usage in Javascript
 
 Create an initial state, and use it to create the Profunctor.  
@@ -80,6 +82,7 @@ const authorsProf = appProf.promap(
 
 console.log(authorsProf.getState()); 
 // { 
+//   counter: 1,
 //   1: {
 //     name: 'Andre Staltz',
 //     github: 'staltz'
