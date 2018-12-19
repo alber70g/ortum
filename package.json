@@ -26,6 +26,9 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {},
+  "engines": {
+    "node": ">= 8"
+  },
   "nyc": {
     "extension": [
       ".ts"
