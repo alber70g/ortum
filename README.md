@@ -1,6 +1,8 @@
 Ortum
 =====
 
+![](https://img.shields.io/codeship/a1ced050-e5b1-0136-a839-2ea949930c0f.svg)
+![](https://img.shields.io/npm/dt/ortum.svg)
 ![](https://img.shields.io/bundlephobia/min/ortum.svg)
 
 Ortum is a small framework agnostic, unidirectional state 
