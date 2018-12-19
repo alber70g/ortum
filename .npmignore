@@ -1,6 +1,7 @@
 /node_modules
-/.vscode
 package-lock.json
 /usage-*
 /dist
-
+.cache
+.nyc_output
+.vscode

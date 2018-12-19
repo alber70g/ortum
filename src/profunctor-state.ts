@@ -1,5 +1,3 @@
-import { memoizeWith, identity } from 'ramda';
-
 export type Updater<T> = (prev: T) => T;
 export type GetState<T> = () => T;
 export type SetState<T> = (updater: Updater<T> | T) => void;
@@ -17,7 +15,7 @@ export interface StateContainer<T> {
  * Inspired by https://github.com/staltz/use-profunctor-state
  */
 export class ProfunctorState<T> {
-  constructor(public getState: GetState<T>, public setState: SetState<T>) {}
+  constructor(public getState: GetState<T>, public setState: SetState<T>) { }
 
   promap<S>(lens: Lens<T, S>, args?: any[]): ProfunctorState<S>;
   promap<S>(
@@ -47,25 +45,14 @@ export class ProfunctorState<T> {
 
     const innerState = () => get(this.getState());
 
-    const memoProfunctor = memoizeWith(
-      identity,
-      (innerState: GetState<S>, innerSetState: SetState<S>) => {
-        const profunctor = new ProfunctorState(innerState, innerSetState);
-        profunctor.promap = profunctor.promap.bind(
-          profunctor,
-        ) as typeof profunctor.promap;
-        return profunctor;
-      },
-    );
+    const profunctor = (innerState: GetState<S>, innerSetState: SetState<S>) => {
+      const profunctor = new ProfunctorState(innerState, innerSetState);
+      profunctor.promap = profunctor.promap.bind(
+        profunctor,
+      ) as typeof profunctor.promap;
+      return profunctor;
+    }
 
-    return memoProfunctor(innerState, innerSetState);
-
-    // const profunctor = new ProfunctorState(innerState, innerSetState);
-
-    // profunctor.promap = profunctor.promap.bind(
-    //   profunctor,
-    // ) as typeof profunctor.promap;
-
-    // return profunctor;
+    return profunctor(innerState, innerSetState);
   }
 }

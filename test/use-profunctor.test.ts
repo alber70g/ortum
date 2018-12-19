@@ -11,7 +11,7 @@ test('useProfunctor', (t) => {
   t.plan(8);
 
   const initialState = { number: 0, foo: { bar: 1 } };
-  const [ testProf, onStateChange ] = useProfunctor(
+  const [testProf, onStateChange] = useProfunctor(
     new SimpleStateContainer(initialState),
   );
   t.deepEqual(
@@ -33,7 +33,7 @@ test('useProfunctor', (t) => {
   });
   testProf.setState(updater);
   // set listener to nothing so the assert doesn't get triggered everytime
-  onStateChange(() => {});
+  onStateChange(() => { });
   t.deepEqual(
     testProf.getState(),
     updater(initialState),
