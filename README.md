@@ -1,6 +1,8 @@
 Ortum
 =====
 
+![](https://img.shields.io/bundlephobia/min/ortum.svg)
+
 Ortum is a small framework agnostic, unidirectional state 
 management library.  
 It's inspired by the work of André Staltz' on [Profunctor State Optics](https://github.com/staltz/use-profunctor-state)
@@ -30,7 +32,7 @@ The `useProfunctor` returns an array with two elements:
  - an onStateChange that you can pass a callback of `(state) => console.log(state)`
 
 ```js
-const { SimpleStateContainer, useProfunctor } = require('../lib/commonjs');
+const { SimpleStateContainer, useProfunctor } = require('ortum');
 
 const initialState = { 
   counter: 0, 
@@ -47,7 +49,7 @@ const initialState = {
   
 };
 
-// Create the profunctor
+// Create the app profunctor
 const [appProf, onStateChange] = useProfunctor(
   new SimpleStateContainer(initialState),
 );
@@ -57,7 +59,7 @@ onStateChange((state) => console.log(state));
 
 // Use the profunctor to get and set the state
 console.log(appProf.getState()); 
-// { counter: 0, authors: { .. }  }
+// `{ counter: 0, authors: { .. }  }` 
 
 // Set state using an Updater: prevState => newState
 // After this statement you'll get a console.log with 
