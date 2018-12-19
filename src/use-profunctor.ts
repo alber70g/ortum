@@ -11,7 +11,7 @@ export function useProfunctor<T>(
     // cb(stateContainer.getState());
   }
 
-  function newSetState(updater: Updater<T>) {
+  function newSetState(updater: Updater<T> | T) {
     stateContainer.setState(updater);
     cb && cb(stateContainer.getState());
   }

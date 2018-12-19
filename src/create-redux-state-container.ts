@@ -1,5 +1,5 @@
 import { Store, Action } from 'redux';
-import { StateContainer } from './profunctor-state';
+import { StateContainer, Updater } from './profunctor-state';
 
 /**
  * Creates a StateContainer based on Redux
@@ -7,7 +7,7 @@ import { StateContainer } from './profunctor-state';
  * @param action The action (containing a 'type' prop) that will
  *   be dispatched when updating the state from the profunctor
  */
-export function createReduxStateContainer<T = any>(
+export function createReduxStateContainer<T = { [key: string]: string }>(
   store: Store<T>,
   action: Action,
 ): StateContainer<T> {
@@ -16,7 +16,10 @@ export function createReduxStateContainer<T = any>(
     setState: (updater) => {
       store.dispatch({
         type: action.type,
-        payload: updater(stateContainer.getState()),
+        payload:
+          typeof updater === 'function'
+            ? (updater as Updater<T>)(stateContainer.getState())
+            : updater,
       });
     },
   };

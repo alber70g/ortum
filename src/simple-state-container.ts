@@ -11,7 +11,9 @@ export class SimpleStateContainer<T> implements StateContainer<T> {
     return this.state;
   }
 
-  setState(updater: Updater<T>) {
-    this.state = updater(this.state);
+  setState(updater: Updater<T> | T) {
+    this.state = (typeof updater === 'function') 
+      ? (updater as Updater<T>)(this.state)
+      : updater as T;
   }
 }
