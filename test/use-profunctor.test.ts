@@ -77,8 +77,8 @@ test('useProfunctor', (t) => {
     'state stays the same',
   );
 
-  const oldState = testProf.getState();
-  testProf.setState({ ...testProf.getState(), number: 10 });
+  const oldState = sameStateProf.getState();
+  sameStateProf.setState({ ...testProf.getState(), number: 10 });
   t.deepEqual(
     testProf.getState(),
     { ...oldState, number: 10 },

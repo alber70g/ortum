@@ -3,7 +3,7 @@ import * as redux from 'redux';
 import { createReduxStateContainer, Updater } from '../lib/commonjs';
 
 test('createReduxStateContainer', (t) => {
-  t.plan(2);
+  t.plan(3);
 
   class ProfAction<T> implements redux.Action {
     public type = 'PROF_ACTION';
@@ -38,6 +38,14 @@ test('createReduxStateContainer', (t) => {
     testProf.getState(),
     updater(state),
     'setState() updates state correctly',
+  );
+
+  const oldState = testProf.getState();
+  testProf.setState({ ...testProf.getState(), number: 10 });
+  t.deepEqual(
+    testProf.getState(),
+    { ...oldState, number: 10 },
+    'setState(T) updates state correctly',
   );
 
   t.end();

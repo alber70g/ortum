@@ -3,7 +3,7 @@ import { SimpleStateContainer } from '../lib/commonjs';
 import { Updater } from '../lib/commonjs';
 
 test('SimpleStateContainer', (t) => {
-  t.plan(2);
+  t.plan(3);
 
   const state = { number: 1, foo: { bar: { baz: 1 } } };
   const simpleState = new SimpleStateContainer(state);
@@ -24,6 +24,15 @@ test('SimpleStateContainer', (t) => {
     simpleState.getState(),
     updater(state),
     'setState() modifies the state correctly',
+  );
+
+  const oldState = simpleState.getState();
+  simpleState.setState({ ...oldState, number: 111 });
+
+  t.deepEquals(
+    simpleState.getState(),
+    { ...oldState, number: 111 },
+    'setState(T) modifies the state correctly',
   );
   t.end();
 });
