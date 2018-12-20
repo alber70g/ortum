@@ -1,7 +1,5 @@
-import { useProfunctor } from '../lib/commonjs';
-import { SimpleStateContainer } from '../lib/commonjs';
-import { html, render } from '../node_modules/lit-html/lit-html.js';
-import { ProfunctorState } from '../lib/commonjs/profunctor-state';
+import { useProfunctor, SimpleStateContainer, ProfunctorState } from 'ortum';
+import { html, render } from 'lit-html';
 
 type Todo = { id?: number; description: string; done: boolean };
 type State = { todoState: { todos: Todo[]; newTodo?: Todo } };
