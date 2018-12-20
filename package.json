@@ -4,5 +4,8 @@
   "readme": "https://github.com/alber70g/ortum/tree/master/packages/node_modules/ortum",
   "devDependencies": {
     "lerna": "^3.7.1"
+  },
+  "engines": {
+    "node": "^8 || ^10"
   }
 }
