@@ -4,6 +4,8 @@ Ortum
 ![](https://img.shields.io/codeship/a1ced050-e5b1-0136-a839-2ea949930c0f.svg)
 ![](https://img.shields.io/npm/dt/ortum.svg)
 ![](https://img.shields.io/bundlephobia/min/ortum.svg)
+![](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)
+![](https://img.shields.io/badge/license-MIT-brightgreen.svg)
 
 Ortum is a small framework agnostic, unidirectional state 
 management library.  
@@ -13,6 +15,10 @@ Ortum allows your features to be independent from the global state while having
 the ability to use the global state.  
 By using this, your features are decoupled from their environment, thus easy to test.
 
+Demo
+----
+
+A demo can be found here: https://stackblitz.com/edit/ortum-counter?file=src/counter.ts
 
 Getting started
 ---------------
@@ -23,7 +29,6 @@ Install into your project:
 $ npm install --save ortum
 ```
 
-> Give it a try at: https://stackblitz.com/edit/ortum-counter?file=src/counter.ts
 
 ### Usage in Javascript
 

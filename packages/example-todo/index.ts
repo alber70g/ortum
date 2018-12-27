@@ -1,5 +1,6 @@
 import { useProfunctor, SimpleStateContainer, ProfunctorState } from 'ortum';
 import { html, render } from 'lit-html';
+import * as R from 'ramda';
 
 type Todo = { id?: number; description: string; done: boolean };
 type State = { todoState: { todos: Todo[]; newTodo?: Todo } };
@@ -29,7 +30,7 @@ function app(container: HTMLElement) {
   `;
   const renderApp = () => render(appView(), container);
   onStateChange(renderApp);
-  
+
   // initial render
   renderApp();
 }
@@ -40,11 +41,13 @@ function todoList({
   promap,
 }: ProfunctorState<{ todos: Todo[]; newTodo?: Todo }>) {
   const todosPromap = promap(
-    (state) => state.todos,
-    (todos, state) => ({ ...state, todos }),
+    (state) => R.view(R.lensProp('todos'))(state),
+    R.set(R.lensProp('todos'))
   );
+  var x = todosPromap.getState()
   const addTodo = (newTodo: Todo) =>
     todosPromap.setState((todos) => [...todos, newTodo]);
+  const filterId = (id: number) => R.filter<{ id: number }>(x => x.id === id);
   const removeTodo = (id: number) =>
     todosPromap.setState((todos) => todos.filter((todo) => todo.id !== id));
 
@@ -71,8 +74,8 @@ function todoList({
           <input @keyup=${setNewTodo} />
           <button @click=${() => addTodo}>Add</button></li>
           ${getState().todos.map(
-            (t) => t.id && todo(createTodoProf(t.id), removeTodo),
-          )}
+    (t) => t.id && todo(createTodoProf(t.id), removeTodo),
+  )}
       </ul>
     `;
 }
