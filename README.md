@@ -29,6 +29,8 @@
 Description
 ------------
 
+> Ortum means "the rise" or "origin" which resonates with the functionality of the library with regards to functional state management
+
 Ortum is a small framework agnostic, unidirectional state management library.  
 It's inspired by the work of André Staltz' on
 [Profunctor State Optics](https://github.com/staltz/use-profunctor-state)
