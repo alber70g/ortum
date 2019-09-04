@@ -1,0 +1,15 @@
+{
+  "prettier.arrowParens": true,
+  "prettier.bracesSpacing": true,
+  "prettier.bracketSpacing": false,
+  "prettier.printWidth": 80,
+  "prettier.semi": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "all",
+  "prettier.typescriptEnable": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.useTabs": false
+}

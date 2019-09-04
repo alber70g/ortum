@@ -14,7 +14,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "start": "parcel ./index.html --open"
+    "start": "parcel ./index.html --open",
+    "build": "parcel build ./index.html"
   },
   "bugs": {
     "url": "https://github.com/alber70g/ortum/issues"

@@ -155,7 +155,7 @@ const appProf = useProfunctor(
   new SimpleStateContainer({ foo: { bar: { baz: 'value' } } })
 )
 
-const bazLens = R.lensProp(['foo','bar','baz']);
+const bazLens = R.lensPath(['foo','bar','baz']);
 const bazProf = appProf.promap(
   R.view(bazLens),
   R.set(bazLens)
@@ -184,3 +184,15 @@ appProf.promap(
   }
 )
 ```
+
+
+
+Ortum and lit-html
+------------------
+
+Ortum can be used in multiple ways. A useful way is how 
+
+### Todo 
+
+- Add docs: How it relates to Redux, Reacts setState
+- Add docs: How to/can I use it with React, Angular, lit-html

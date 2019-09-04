@@ -3,6 +3,7 @@
   "private": true,
   "readme": "https://github.com/alber70g/ortum/tree/master/packages/node_modules/ortum",
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "lerna": "^3.7.1"
   },
   "license": "MIT",
